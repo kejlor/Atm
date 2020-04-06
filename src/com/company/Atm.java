@@ -2,7 +2,13 @@ package com.company;
 
 public class Atm{
 
-    public static void withdrawMoney(int moneyToWithdraw, BankAccount loggedUser){
+    private final BankAccount loggedUser;
+    
+    public Atm(final BankAccount loggedUser) {
+        this.loggedUser = loggedUser;   
+    }
+    
+    public void withdrawMoney(int moneyToWithdraw) {
 
         if(loggedUser.getAccountBalance() - moneyToWithdraw >= 0){
             loggedUser.setAccountBalance(loggedUser.getAccountBalance() - moneyToWithdraw);
@@ -14,7 +20,7 @@ public class Atm{
         }
     }
 
-    public static void deposit(int moneyToDeposit, BankAccount loggedUser){
+    public void deposit(int moneyToDeposit) {
         loggedUser.setAccountBalance(loggedUser.getAccountBalance() + moneyToDeposit);
         System.out.println("Your bank account contains now:" + loggedUser.getAccountBalance());
     }
